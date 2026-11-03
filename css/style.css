@@ -1,0 +1,115 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #f4f6f8;
+  padding: 20px;
+}
+
+header {
+  margin-bottom: 3rem;
+  padding: 0 3rem;
+}
+header nav{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header nav img {
+  width: 100px;
+}
+
+header nav ul{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  column-gap: 1rem;
+  list-style-type: none;
+}
+
+header nav a, header nav a:link{
+text-transform: uppercase;
+text-decoration: none;
+color: #1a1a1a;
+font-weight: 700;
+padding: 0.5rem 1rem;
+}
+
+header nav a:hover{
+  background-color: #72BCFE;
+  border-radius: 5px;
+}
+
+
+/* Sección de filtros que ahora está dentro del main */
+.filters-section {
+  max-width: 1200px;
+  margin: 0 auto 100px auto;
+}
+
+.filters-section h1 {
+  margin-bottom: 15px;
+  color: #1a1a1a;
+}
+
+.filters {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap; /* Permite que los filtros se acomoden en pantallas pequeñas */
+}
+
+.filters input, .filters select {
+  padding: 10px 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  flex: 1; /* Hace que los inputs tomen espacio disponible de forma flexible */
+  min-width: 200px;
+}
+
+/* --- CONTENEDOR CON FLEXBOX --- */
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;       /* Permite que las tarjetas pasen a la siguiente fila */
+  gap: 25px;            /* Espacio uniforme entre tarjetas */
+  justify-content: center; /* Centra las tarjetas en la última fila si no completan el ancho */
+  max-width: 1200px;
+  margin: 0 auto;
+}
+#countriesContainer {
+    display: flex;
+    justify-content:center ;
+    align-items: center;
+    gap: 1rem;
+}
+
+#countriesContainer article {
+  width: 220px;
+  height: 350px;
+  border: 1px solid black;
+    background: #ffffff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+
+}
+
+#countriesContainer article h2, #countriesContainer article p{
+  padding: 0.2rem;
+}
+
+#countriesContainer article img {
+    width: 100%;
+    height: 35%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+

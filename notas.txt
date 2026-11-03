@@ -1,0 +1,187 @@
+//DATOS QUE ME DEVUELVE LA API
+{
+  "names": {
+    "common": "Canada",
+    "official": "Canada"
+  },
+  "codes": {
+    "alpha_2": "CA",
+    "alpha_3": "CAN",
+    "fifa": "CAN"
+  },
+  "capitals": [
+    {
+      "name": "Ottawa",
+      "primary": true,
+      "coordinates": {
+        "lat": 45.42,
+        "lng": -75.7
+      }
+    }
+  ],
+  "flag": {
+    "emoji": "🇨🇦",
+    "url_svg": "https://flags.restcountries.com/v5/svg/ca.svg",
+    "url_png": "https://flags.restcountries.com/v5/w640/ca.png"
+  },
+  "region": "Americas",
+  "subregion": "North America",
+  "population": 38005238,
+  "area": {
+    "kilometers": 9984670,
+    "miles": 3855101.1
+  },
+  "borders": ["USA"],
+  "currencies": [
+    {
+      "code": "CAD",
+      "name": "Canadian dollar",
+      "symbol": "$"
+    }
+  ],
+  "languages": [
+    {
+      "name": "English",
+      "bcp47": "en"
+    },
+    {
+      "name": "French",
+      "bcp47": "fr"
+    }
+  ],
+  "calling_codes": ["1"],
+  "timezones": [
+    "UTC-08:00",
+    "UTC-07:00",
+    "UTC-06:00",
+    "UTC-05:00"
+  ],
+  "tlds": [".ca"]
+}
+
+
+
+
+cards-flex
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1670605283719-016e7b29756b?w=800&q=80" alt="Tokio, Japón">
+    
+      <div class="card-content">
+        <h2>Japón</h2>
+        <p><strong>Capital:</strong> Tokio</p>
+        <p><strong>Continente:</strong> Asia</p>
+        <p><strong>Moneda:</strong> Yen japonés (¥)</p>
+        <p><strong>Idioma:</strong> Japonés</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1670605283719-016e7b29756b?w=800&q=80" alt="Tokio, Japón">
+    
+      <div class="card-content">
+        <h2>Japón</h2>
+        <p><strong>Capital:</strong> Tokio</p>
+        <p><strong>Continente:</strong> Asia</p>
+        <p><strong>Moneda:</strong> Yen japonés (¥)</p>
+        <p><strong>Idioma:</strong> Japonés</p>
+      </div>
+    </div>
+
+
+
+
+/* --- TARJETA RE-ESTRUTURADA CON FLEXBOX --- */
+.card {
+  background: #ffffff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  /* Flexbox para hacer las tarjetas responsivas */
+  flex: 1 1 280px;      /* Crecen, se encogen y tienen un ancho base de 280px */
+  max-width: 350px;     /* Ancho máximo para evitar que una tarjeta sola se estire demasiado */
+
+  /* Flexbox interno vertical para alinear contenido */
+  display: flex;
+  flex-direction: column;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+.card-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.card-body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Ocupa el espacio vertical restante */
+}
+
+.card-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: #1a1a1a;
+}
+
+.card-info {
+  margin-bottom: 6px;
+  font-size: 0.95rem;
+  color: #4a4a4a;
+}
+
+.card-info strong {
+  color: #1a1a1a;
+}
+
+
+  .card {
+    width: 320px;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background: white;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 35px rgba(0, 0, 0, 0.18);
+  }
+
+  .card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .card-content {
+    padding: 20px 22px 24px;
+  }
+
+  .card-content h2 {
+    margin: 0 0 14px 0;
+    font-size: 1.6rem;
+    color: #1a1a1a;
+  }
+
+  .card-content p {
+    margin: 8px 0;
+    font-size: 0.95rem;
+    color: #444;
+    line-height: 1.4;
+  }
+
+  .card-content strong {
+    color: #222;
+  }

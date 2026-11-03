@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Explorador de Países</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <header>
+    <nav>
+      <a href="index.html" title="logo-imagen"><img src="img/tbp.webp" alt="Logo de tbp"></a>
+      <ul>
+        <li><a href="index.html" title="Click para volver al inicio">inicio</a></li>
+        <li><a href="favoritos.html" title="Click para ver mis favoritos">favoritos</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Sección de filtros movida aquí -->
+    <section class="filters-section">
+      <h1>Explorador de Países</h1>
+      <div class="filters">
+        <input type="text" id="searchInput" placeholder="Buscar país por nombre..." aria-label="Buscar país por nombre">
+        <select id="regionFilter" aria-label="Filtrar por continente">
+          <option value="">Todos los continentes</option>
+          <option value="Americas">América</option>
+          <option value="Europe">Europa</option>
+          <option value="Asia">Asia</option>
+          <option value="Africa">África</option>
+          <option value="Oceania">Oceanía</option>
+        </select>
+      </div>
+    </section>
+
+    <!-- Contenedor con Flexbox para las tarjetas -->
+    <section id="countriesContainer" class="flex-container">
+
+    </section>
+
+    
+  </main>
+
+<script type="module" src="/js/script.js"></script>
+</body>
+
+</html>

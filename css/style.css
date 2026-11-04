@@ -38,10 +38,21 @@ text-decoration: none;
 color: #1a1a1a;
 font-weight: 700;
 padding: 0.5rem 1rem;
+/*  */
+  background-color: #3b82f6; /* Azul brillante */
+  color: #ffffff;            /* Texto blanco para buen contraste */
+  border: none;
+  padding: 8px 18px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 6px;        /* Bordes redondeados acordes al diseño */
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+
 }
 
 header nav a:hover{
-  background-color: #72BCFE;
+  background-color: #2563eb;
   border-radius: 5px;
 }
 
@@ -49,7 +60,7 @@ header nav a:hover{
 /* Sección de filtros que ahora está dentro del main */
 .filters-section {
   max-width: 1200px;
-  margin: 0 auto 100px auto;
+  margin: 0 auto 50px auto;
 }
 
 .filters-section h1 {
@@ -113,3 +124,58 @@ header nav a:hover{
     flex-shrink: 0;
 }
 
+h2 {
+  font-size: 1.25rem;
+}
+
+/*BOTONES PAGINACION*/
+
+/* Contenedor principal de la paginación */
+.pagination-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin: 0 0 50px 0;
+  font-family: inherit;
+}
+
+/* Estilo base para los botones (inspirado en el botón INICIO) */
+.pagination-btn {
+  background-color: #3b82f6; /* Azul brillante */
+  color: #ffffff;            /* Texto blanco para buen contraste */
+  border: none;
+  padding: 8px 18px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 6px;        /* Bordes redondeados acordes al diseño */
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+/* Efecto Hover (al pasar el cursor por encima) */
+.pagination-btn:hover:not(:disabled) {
+  background-color: #2563eb; /* Un tono de azul ligeramente más oscuro */
+  transform: translateY(-1px); /* Sutil efecto de elevación */
+}
+
+/* Efecto al hacer clic */
+.pagination-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+/* Estilo visual para cuando el botón está deshabilitado (.disabled) */
+.pagination-btn:disabled {
+  background-color: #e5e7eb; /* Fondo gris claro */
+  color: #9ca3af;            /* Texto gris apagado */
+  cursor: not-allowed;       /* Cambia el cursor a prohibido */
+  transform: none;
+  box-shadow: none;
+}
+
+/* Estilo para el texto central de la página (ej: "Página 1") */
+#page-info {
+  font-weight: 600;
+  color: #374151;
+  font-size: 15px;
+}

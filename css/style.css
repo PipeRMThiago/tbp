@@ -14,7 +14,8 @@ header {
   margin-bottom: 3rem;
   padding: 0 3rem;
 }
-header nav{
+
+header nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -24,7 +25,7 @@ header nav img {
   width: 100px;
 }
 
-header nav ul{
+header nav ul {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -32,24 +33,44 @@ header nav ul{
   list-style-type: none;
 }
 
-header nav a, header nav a:link{
-text-transform: uppercase;
-text-decoration: none;
-color: #1a1a1a;
-font-weight: 700;
-padding: 0.5rem 1rem;
+header nav a,
+header nav a:link {
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #1a1a1a;
+  font-weight: 700;
+  padding: 0.5rem 1rem;
+  /*  */
+  background-color: #3b82f6;
+  /* Azul brillante */
+  color: #ffffff;
+  /* Texto blanco para buen contraste */
+  border: none;
+  padding: 8px 18px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 6px;
+  /* Bordes redondeados acordes al diseño */
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+
 }
 
-header nav a:hover{
-  background-color: #72BCFE;
+header nav a:hover {
+  background-color: #2563eb;
   border-radius: 5px;
+}
+
+header nav>a,
+header nav>a:link {
+  background-color: transparent;
 }
 
 
 /* Sección de filtros que ahora está dentro del main */
 .filters-section {
   max-width: 1200px;
-  margin: 0 auto 100px auto;
+  margin: 0 auto 50px auto;
 }
 
 .filters-section h1 {
@@ -60,56 +81,148 @@ header nav a:hover{
 .filters {
   display: flex;
   gap: 15px;
-  flex-wrap: wrap; /* Permite que los filtros se acomoden en pantallas pequeñas */
+  flex-wrap: wrap;
+  /* Permite que los filtros se acomoden en pantallas pequeñas */
 }
 
-.filters input, .filters select {
+.filters input,
+.filters select {
   padding: 10px 15px;
   border: 1px solid #ccc;
   border-radius: 8px;
   font-size: 16px;
-  flex: 1; /* Hace que los inputs tomen espacio disponible de forma flexible */
+  flex: 1;
+  /* Hace que los inputs tomen espacio disponible de forma flexible */
   min-width: 200px;
 }
 
 /* --- CONTENEDOR CON FLEXBOX --- */
 .flex-container {
   display: flex;
-  flex-wrap: wrap;       /* Permite que las tarjetas pasen a la siguiente fila */
-  gap: 25px;            /* Espacio uniforme entre tarjetas */
-  justify-content: center; /* Centra las tarjetas en la última fila si no completan el ancho */
+  flex-wrap: wrap;
+  /* Permite que las tarjetas pasen a la siguiente fila */
+  gap: 25px;
+  /* Espacio uniforme entre tarjetas */
+  justify-content: center;
+  /* Centra las tarjetas en la última fila si no completan el ancho */
   max-width: 1200px;
   margin: 0 auto;
 }
+
 #countriesContainer {
-    display: flex;
-    justify-content:center ;
-    align-items: center;
-    gap: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
 }
 
 #countriesContainer article {
   width: 220px;
   height: 350px;
   border: 1px solid black;
-    background: #ffffff;
+  background: #ffffff;
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   display: flex;
   flex-direction: column;
+  position: relative;
 
 }
 
-#countriesContainer article h2, #countriesContainer article p{
+#countriesContainer article h2,
+#countriesContainer article p {
   padding: 0.2rem;
 }
 
 #countriesContainer article img {
-    width: 100%;
-    height: 35%;
-    object-fit: cover;
-    flex-shrink: 0;
+  width: 100%;
+  height: 35%;
+  object-fit: cover;
+  flex-shrink: 0;
 }
 
+h2 {
+  font-size: 1.25rem;
+}
+
+/*BOTONES PAGINACION*/
+
+/* Contenedor principal de la paginación */
+.pagination-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin: 0 0 50px 0;
+  font-family: inherit;
+}
+
+/* Estilo base para los botones (inspirado en el botón INICIO) */
+.pagination-btn {
+  background-color: #3b82f6;
+  /* Azul brillante */
+  color: #ffffff;
+  /* Texto blanco para buen contraste */
+  border: none;
+  padding: 8px 18px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 6px;
+  /* Bordes redondeados acordes al diseño */
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+/* Efecto Hover (al pasar el cursor por encima) */
+.pagination-btn:hover:not(:disabled) {
+  background-color: #2563eb;
+  /* Un tono de azul ligeramente más oscuro */
+  transform: translateY(-1px);
+  /* Sutil efecto de elevación */
+}
+
+/* Efecto al hacer clic */
+.pagination-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+/* Estilo visual para cuando el botón está deshabilitado (.disabled) */
+.pagination-btn:disabled {
+  background-color: #e5e7eb;
+  /* Fondo gris claro */
+  color: #9ca3af;
+  /* Texto gris apagado */
+  cursor: not-allowed;
+  /* Cambia el cursor a prohibido */
+  transform: none;
+  box-shadow: none;
+}
+
+/* Estilo para el texto central de la página (ej: "Página 1") */
+#page-info {
+  font-weight: 600;
+  color: #374151;
+  font-size: 15px;
+}
+
+
+.btn-favorito {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: 1%;
+  right: 1%;
+  border-radius: 50%;
+}
+
+
+#favoritos-main section {
+  width: 92%;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+#favoritos-main section img { 
+  width: 70%;}

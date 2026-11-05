@@ -1,72 +1,5 @@
-/* import clave from "./apikey.js";
 
-//Conte
-const sectoresContainer = document.getElementById('countriesContainer');
-
-
-const response = await fetch(
-  'https://api.restcountries.com/countries/v5?limit=100',
-  { headers: { 'Authorization': clave } }
-);
-
-
-//?offset=25
-
-
-
-async function recorrerPaises() {
-  const countries = await response.json();
-
-
-  countries.data.objects.forEach(country => {
-    if (country.flag.url_svg !== "" && country.capitals.length != 0) {
-
-      const card = document.createElement("article");
-      card.className = "country-card";
-
-      const flag = document.createElement("img");
-      flag.src = country.flag.url_svg;
-      flag.alt = "Bandera de " + country.names.official;
-      card.appendChild(flag);
-
-      const title = document.createElement("h2");
-      title.textContent = country.names.official;
-      card.appendChild(title);
-
-      const paragraphCapital = document.createElement('p');
-      paragraphCapital.textContent = "Capital: " + country.capitals[0].name;
-      card.appendChild(paragraphCapital);
-
-      const paragraphRegion = document.createElement('p');
-      paragraphRegion.textContent = "Continente: " + country.region;
-      card.appendChild(paragraphRegion);
-
-      const paragraphLenguage = document.createElement('p');
-      paragraphLenguage.textContent = "Idioma: " + country.languages[0].name;
-      card.appendChild(paragraphLenguage);
-
-      const paragraphCurrence= document.createElement('p');
-      paragraphCurrence.textContent = "Moneda: " + country.currencies[0].name;
-      card.appendChild(paragraphCurrence);
-
-
-      sectoresContainer.appendChild(card);
-
-      console.log(title.length);
-
-    }
-  })
-};
-
-recorrerPaises(); */
-
-//-----PÁGINACIÓN-----//
-//-----PÁGINACIÓN-----//
-//-----PÁGINACIÓN-----//
-
-
-
-import clave from "./apikey.js";
+import clave from "./apikey.js"; /* importe para ocultar la apiKey */
 
 const sectoresContainer = document.getElementById('countriesContainer');
 const btnAnterior = document.getElementById('prev-btn');
@@ -77,28 +10,48 @@ const pageInfo = document.getElementById('page-info');
 let offset = 0;
 const limit = 100;
 
+let region = '';
+
 async function recorrerPaises() {
   // Limpiamos el contenedor antes de cargar los nuevos países
   sectoresContainer.innerHTML = "";
 
+  const url = new URL('https://api.restcountries.com/countries/v5');
+  url.searchParams.append('limit', limit);
+  url.searchParams.append('offset', offset);
+
+  if (region) {
+    url.searchParams.append('region', region);
+  }
+
   try {
     // 2. Hacemos el fetch usando la variable offset de forma dinámica
     const response = await fetch(
-      `https://api.restcountries.com/countries/v5?limit=${limit}&offset=${offset}`,
+      url.toString(),
       { headers: { 'Authorization': clave } }
     );
 
     const countries = await response.json();
+
+    /* con esto me clasifica la lista por orden alfabetico */
+    countries.data.objects.sort((a, b) => {
+      return a.names.official.localeCompare(b.names.official);
+    });
+
 
     countries.data.objects.forEach(country => {
       if (country.flag.url_svg !== "" && country.capitals.length != 0) {
         const card = document.createElement("article");
         card.className = "country-card";
 
+        card.setAttribute("data-region", country.region);
+
         const flag = document.createElement("img");
         flag.src = country.flag.url_svg;
         flag.alt = "Bandera de " + country.names.official;
         card.appendChild(flag);
+
+
 
         const title = document.createElement("h2");
         title.textContent = country.names.official;
@@ -122,8 +75,9 @@ async function recorrerPaises() {
 
         // 1. Creamos el botón de favoritos dentro del forEach
         const btnFavorito = document.createElement("button");
-        btnFavorito.textContent = "⭐ Añadir a favoritos";
+        btnFavorito.textContent = "❤️";
         btnFavorito.className = "btn-favorito"; // Por si le quieres dar estilos luego
+        card.appendChild(btnFavorito);
 
 
 
@@ -149,26 +103,23 @@ recorrerPaises();
 
 // 5. Eventos de los botones para cambiar el offset
 btnSiguiente.addEventListener('click', () => {
-  if (offset < 200) {
-    offset += 100;
+  if (offset < 250) {
+    offset += limit;
     recorrerPaises();
   }
 });
 
 btnAnterior.addEventListener('click', () => {
   if (offset > 0) {
-    offset -= 100;
+    offset -= limit;
     recorrerPaises();
   }
 });
 
-//-----FIN PÁGINACIÓN-----//
-//-----FIN PÁGINACIÓN-----//
-//-----FIN PÁGINACIÓN-----//
+const regionFilter = document.getElementById('regionFilter');
 
-
-
-//-----FAVORITOS-----//
-//-----FAVORITOS-----//
-//-----FAVORITOS-----//
-
+regionFilter.addEventListener('change', (e) => {
+  offset = 0;
+  region = e.target.value.toLowerCase();
+  recorrerPaises();
+});

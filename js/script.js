@@ -8,7 +8,7 @@ const pageInfo = document.getElementById('page-info');
 
 // 1. Variable para controlar el offset inicial
 let offset = 0;
-const limit = 100;
+const limit = 100; //cantidad de cartas que me envía la api
 
 let region = '';
 
@@ -16,7 +16,7 @@ async function recorrerPaises() {
   // Limpiamos el contenedor antes de cargar los nuevos países
   sectoresContainer.innerHTML = "";
 
-  const url = new URL('https://api.restcountries.com/countries/v5');
+  const url = new URL('https://api.restcountries.com/countries/v5'); //creo una nueva url para meter los parametros a medida que cambie
   url.searchParams.append('limit', limit);
   url.searchParams.append('offset', offset);
 
@@ -123,3 +123,108 @@ regionFilter.addEventListener('change', (e) => {
   region = e.target.value.toLowerCase();
   recorrerPaises();
 });
+
+
+// -----------buscador por medio del input ----------- 
+// -----------buscador por medio del input ----------- 
+
+
+const searchInput = document.getElementById('searchInput');
+
+if (searchInput) {
+  searchInput.addEventListener('input', (e) => {
+    const searchText = e.target.value.toLowerCase().trim();
+    const countryCards = document.querySelectorAll('.country-card');
+
+    countryCards.forEach(card => {
+      const titleElement = card.querySelector('h2');
+      if (!titleElement) return;
+
+      const countryName = titleElement.textContent.toLowerCase();
+
+      if (countryName.includes(searchText)) {
+        card.style.display = 'block';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  });
+}
+// -----------buscador por medio del input ----------- 
+// -----------buscador por medio del input ----------- 
+
+
+
+// --------------------Local Storage---------------- 
+
+function getFavoritesFromLocalStorage(){
+    const favoritesString = localStorage.getItem("favorites");
+    // Si no existe, devolvemos un array vacío por defecto
+    if (!favoritesString) {
+        return [];
+    }
+    return JSON.parse(favoritesString);
+}
+
+function saveFavoritesToLocalStorage(favorites){
+    const favoritesString =JSON.stringify(favorites);
+    localStorage.setItem("favorites", favoritesString);
+}
+
+function clearFavorites(favorites){
+    localStorage.setItem("favorites", "[]");
+}
+
+function addToFavorites(element){
+    const favorites = getFavoritesFromLocalStorage();
+    const oldFavorite = favorites.find(f=>f.name === element.name);
+    if (!oldFavorite){
+        favorites.push(element);
+        saveFavoritesToLocalStorage(favorites);
+    }
+}
+
+function removeFavorite(element){
+    const favorites = getFavoritesFromLocalStorage();
+    const oldFavoriteIndex = favorites.findIndex(f=>f.name === element.name);
+    if (oldFavoriteIndex !== -1){
+        favorites.splice(oldFavoriteIndex,1);
+        saveFavoritesToLocalStorage(favorites);
+    }
+}
+
+//Añadir o quitar del localStorage 
+function toggleFavorites(element){
+    let result = false;
+    const favorites = getFavoritesFromLocalStorage();
+    const oldFavoriteIndex = favorites.findIndex(f=>f.name === element.name);
+    if (oldFavoriteIndex === -1){
+        favorites.push(element);
+        result = true;
+    }else{
+        favorites.splice(oldFavoriteIndex,1);
+    }
+    saveFavoritesToLocalStorage(favorites);
+    return result;
+}
+
+function isInFavorites(element){
+    const favorites = getFavoritesFromLocalStorage();
+    const oldFavorite = favorites.find(f=>f.name === element.name);
+    if (oldFavorite){
+        return true;
+    }else{
+        return false;
+    }
+}
+
+export {
+    getFavoritesFromLocalStorage,
+    saveFavoritesToLocalStorage,
+    clearFavorites,
+    addToFavorites,
+    removeFavorite,
+    toggleFavorites,
+    isInFavorites
+}
+

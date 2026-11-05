@@ -216,3 +216,13 @@ h2 {
   right: 1%;
   border-radius: 50%;
 }
+
+
+#favoritos-main section {
+  width: 92%;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+#favoritos-main section img { 
+  width: 70%;}

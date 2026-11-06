@@ -1,5 +1,6 @@
 # tbp
 Proyecto "ThiagobuscaPaises"
+
 "TBP" o ThigoBuscaPaises" es una pequeña web que utiliza el llamado de una api llamada restCountries para
 crear tarjetas con datos de todos los países del mundo, entre lo que se encuentra la imagen de la bandera, 
 el nombre oficial, su capital, y un par de datos más para que los niños (o algunas personas que quieran aprender)
@@ -20,7 +21,7 @@ Paginación: Navegación por resultados mediante `offset` y `limit`.
 
 ---
 
-## 🚀 Instalación y Uso
+##  Instalación y Uso
 
 1. **Clona este repositorio:**
 ```bash

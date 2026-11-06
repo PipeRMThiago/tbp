@@ -63,4 +63,3 @@ Aplicación web funcional con consumo de API, paginación y filtrado.
 4.2. Líneas de Mejora
 Implementación de almacenamiento local (localStorage) para persistencia de elementos favoritos.
 
-Sincronización del estado de filtros en la URL mediante la interfaz URLSearchParams.

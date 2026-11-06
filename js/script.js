@@ -13,7 +13,7 @@ const limit = 100; //cantidad de cartas que me envía la api
 let region = '';
 
 async function recorrerPaises() {
-  // Limpiamos el contenedor antes de cargar los nuevos países
+  // Limpio el contenedor antes de cargar los nuevos países
   sectoresContainer.innerHTML = "";
 
   const url = new URL('https://api.restcountries.com/countries/v5'); //creo una nueva url para meter los parametros a medida que cambie
@@ -154,77 +154,4 @@ if (searchInput) {
 // -----------buscador por medio del input ----------- 
 
 
-
-// --------------------Local Storage---------------- 
-
-function getFavoritesFromLocalStorage(){
-    const favoritesString = localStorage.getItem("favorites");
-    // Si no existe, devolvemos un array vacío por defecto
-    if (!favoritesString) {
-        return [];
-    }
-    return JSON.parse(favoritesString);
-}
-
-function saveFavoritesToLocalStorage(favorites){
-    const favoritesString =JSON.stringify(favorites);
-    localStorage.setItem("favorites", favoritesString);
-}
-
-function clearFavorites(favorites){
-    localStorage.setItem("favorites", "[]");
-}
-
-function addToFavorites(element){
-    const favorites = getFavoritesFromLocalStorage();
-    const oldFavorite = favorites.find(f=>f.name === element.name);
-    if (!oldFavorite){
-        favorites.push(element);
-        saveFavoritesToLocalStorage(favorites);
-    }
-}
-
-function removeFavorite(element){
-    const favorites = getFavoritesFromLocalStorage();
-    const oldFavoriteIndex = favorites.findIndex(f=>f.name === element.name);
-    if (oldFavoriteIndex !== -1){
-        favorites.splice(oldFavoriteIndex,1);
-        saveFavoritesToLocalStorage(favorites);
-    }
-}
-
-//Añadir o quitar del localStorage 
-function toggleFavorites(element){
-    let result = false;
-    const favorites = getFavoritesFromLocalStorage();
-    const oldFavoriteIndex = favorites.findIndex(f=>f.name === element.name);
-    if (oldFavoriteIndex === -1){
-        favorites.push(element);
-        result = true;
-    }else{
-        favorites.splice(oldFavoriteIndex,1);
-    }
-    saveFavoritesToLocalStorage(favorites);
-    return result;
-}
-
-function isInFavorites(element){
-    const favorites = getFavoritesFromLocalStorage();
-    const oldFavorite = favorites.find(f=>f.name === element.name);
-    if (oldFavorite){
-        return true;
-    }else{
-        return false;
-    }
-}
-
-export {
-    getFavoritesFromLocalStorage,
-    saveFavoritesToLocalStorage,
-    clearFavorites,
-    addToFavorites,
-    removeFavorite,
-    toggleFavorites,
-    isInFavorites
-}
 
